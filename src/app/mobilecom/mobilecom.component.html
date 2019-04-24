@@ -1,0 +1,24 @@
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="jumbotron text-center">
+<table border="2" class="table">
+  <tr class="second">
+    <th (click)="sortrow('mobileid')">Mobile Id</th>  <!--Calling a sort row function for sorting a row-->
+    <th (click)="sortrow('mobName')">Mobile Name</th>
+    <th (click)="sortrow('mobPrice')">Mobile Price</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let m of mobiles | orderpipe:mobtype:order" class="first"> <!--orderpipe is a custom pipe built by Pipetransform in orderby.ts file-->
+   <td>{{m.mobileid}}</td>
+   <td>{{m.mobName}}</td>
+   <td>{{m.mobPrice | currency:'USD'}}</td>
+   <td><input type="button" value="Delete" (click)="deleterow(m)" class="btn btn-danger"></td>
+  </tr>
+</table>
+</div>
+  </body>
+</html>
